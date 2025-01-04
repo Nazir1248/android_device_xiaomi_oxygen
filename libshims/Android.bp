@@ -1,0 +1,71 @@
+cc_library_shared {
+    name: "libwui",
+    vendor: true,
+    shared_libs: [
+        "libgui_vendor",
+    ],
+}
+
+// libhidlbase
+cc_library_shared {
+    name: "libhidlbase-vendor",
+    vendor: true,
+    shared_libs: [
+        "libhidlbase",
+    ],
+}
+
+// fpc
+cc_library_shared {
+    name: "libshims_binder",
+    proprietary: true,
+    srcs: [
+        "libshims_binder.cpp",
+    ],
+    cflags: [
+        "-Werror",
+        "-Wextra",
+        "-Wall",
+    ],
+    shared_libs: [
+        "libutils",
+    ],
+}
+
+// libandroid
+cc_library_shared {
+    name: "libshims_android",
+    proprietary: true,
+    srcs: [
+        "libshims_android.cpp",
+    ],
+    cflags: [
+        "-Werror",
+        "-Wextra",
+        "-Wall",
+    ],
+    shared_libs: [
+        "libutils",
+    ],
+}
+
+// libshim_camera
+cc_library_shared {
+    name: "libshims_ui",
+    srcs: ["libshims_ui.cpp"],
+    shared_libs: ["libui"],
+    vendor: true,
+    compile_multilib: "32",
+}
+
+// IMS
+cc_library_shared {
+    name: "libims-shim",
+    shared_libs: [
+        "libgui",
+        "libutils",
+    ],
+    srcs: [
+        "Surface.cpp"
+    ],
+}
